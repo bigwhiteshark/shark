@@ -29,6 +29,30 @@ define(function () {
         return this;
     };
 
+    p.setComponent = function (index, value) {
+        switch (index) {
+            case 0:
+                this.x = value;
+                break;
+            case 1:
+                this.y = value;
+                break;
+            default:
+                throw new Error("index is out of range: " + index);
+        }
+    };
+
+    p.getComponent = function (index) {
+        switch (index) {
+            case 0:
+                return this.x;
+            case 1:
+                return this.y;
+            default:
+                throw new Error("index is out of range: " + index);
+        }
+    };
+
     p.copy = function (v) {
         this.x = v.x;
         this.y = v.y;
@@ -157,7 +181,8 @@ define(function () {
     };
 
     p.distanceToSquared = function (v) {
-        var dx = this.x - v.x, dy = this.y - v.y;
+        var dx = this.x - v.x,
+            dy = this.y - v.y;
         return dx * dx + dy * dy;
     };
 
